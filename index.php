@@ -12,6 +12,8 @@ use App\Repositories\TaskRepository;
 
 require __DIR__ . '/vendor/autoload.php';
 
+header('Content-Type: application/json');
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -49,6 +51,7 @@ $container['database'] = function ($c) {
 				throw new Exception("Error connecting to SQLite database");
 			}
 			break;
+
 		case 'mysql':
 			$dsn = sprintf(
 				'%s:host=%s;dbname=%s',
@@ -63,6 +66,7 @@ $container['database'] = function ($c) {
 				throw new Exception('Error connecting to MYSQL database');
 			}			
 			break;
+			
 		default:
 			throw new Exception('Unsupported database driver');
 	}

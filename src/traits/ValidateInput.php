@@ -6,7 +6,7 @@ trait ValidateInput
 {
 	protected function clearInputs(array $data): array
 	{
-		return array_map(fn($item) => preg_replace('/\s+/', ' ', strip_tags(htmlspecialchars(strtolower(trim($item))))), $data); 
+		return array_map(fn($item) => preg_replace('/\s+/', ' ', strip_tags(htmlspecialchars(trim($item)))), $data); 
 	}
 
 	protected function clearID(int $id): ?int
@@ -36,6 +36,6 @@ trait ValidateInput
 
 	protected function checkStringSize(string $input, int $min, int $max): bool
 	{
-		return strlen($input) > $min && strlen($input) < $max;
+		return strlen($input) > $min && strlen($input) <= $max;
 	}
 }

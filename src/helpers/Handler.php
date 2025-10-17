@@ -44,7 +44,6 @@ class Handler
 				http_response_code(500);
 		}
 		$message = method_exists($th, 'getErrors') ? $th->getErrors() : 'Something went wrong';
-		header('Content-Type: application/json');
 		echo json_encode([
 			'status' => 'failed',
 			'message' => $message
@@ -68,7 +67,6 @@ class Handler
 				$this->logger->info($errstr, $errfile, $errline, 'error');
 		}
 
-		header('Content-Type: application/json');
 		http_response_code(500);
 		echo json_encode([
 			'status' => 'failed',
@@ -82,7 +80,7 @@ class Handler
 		$lastError = error_get_last();
 		if ($lastError !== null) {
 			$this->logger->error($lastError['message'], $lastError['file'], $lastError['line'], 'fatal error');
-			header('Content-Type: application/json');
+
 			http_response_code(500);
 			echo json_encode([
 				'status' => 'failed',

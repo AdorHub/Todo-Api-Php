@@ -58,6 +58,6 @@ class TaskController
 		return $response->json([
 			'status' => 'success',
 			'message' => 'Success on deleting task'
-		]);
+		], 204);
 	}
 }
