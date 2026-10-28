@@ -54,9 +54,10 @@ $container['database'] = function ($c) {
 
 		case 'mysql':
 			$dsn = sprintf(
-				'%s:host=%s;dbname=%s',
+				'%s:host=%s;port=%s;dbname=%s',
 				$_ENV['DB_DRIVER'],
 				$_ENV['DB_HOST'],
+				$_ENV['DB_PORT'] ?? 3306,
 				$_ENV['DB_NAME']
 			);
 			try {
