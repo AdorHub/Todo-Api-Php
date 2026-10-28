@@ -81,7 +81,7 @@ class TaskService
 		if (!$this->checkStringSize($data['title'], 6, 255)) {
 			$errors[] = 'Title field size must be between 6 and 255';
 		}
-		if (!$this->checkStringSize($data['description'], 0, 500)) {
+		if (!$this->checkStringSize($data['description'] ?? '', 0, 500)) {
 			$errors[] = 'Description field max size is 500';
 		}
 		if (!empty($errors)) {
